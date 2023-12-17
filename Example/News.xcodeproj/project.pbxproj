@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AEF8AD3EC436F5D2D19A440 /* News.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = News.podspec; path = ../News.podspec; sourceTree = "<group>"; };
+		0AEF8AD3EC436F5D2D19A440 /* News.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = News.podspec; path = ../News.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		227C8FE88A9AAA41A0C31343 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* News_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
