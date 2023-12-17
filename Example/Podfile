@@ -1,13 +1,13 @@
 use_frameworks!
 
-platform :ios, '10.0'
+platform :ios, '14.0'
 
 target 'News_Example' do
   pod 'News', :path => '../'
 
-  target 'News_Tests' do
-    inherit! :search_paths
-
-    
-  end
+#  target 'News_Tests' do
+#    inherit! :search_paths
+#
+#
+# end
 end
