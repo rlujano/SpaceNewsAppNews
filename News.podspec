@@ -32,6 +32,10 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'News/Classes/**/*'
   
+  s.test_spec 'IntegratedTest' do |test_spec|
+    test_spec.source_files = 'News/Tests/IntegratedTests/**/*'
+  end
+  
   # s.resource_bundles = {
   #   'News' => ['News/Assets/*.png']
   # }
