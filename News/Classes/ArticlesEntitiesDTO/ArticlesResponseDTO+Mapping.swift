@@ -16,6 +16,7 @@ struct Article: Decodable {
     private enum CodingKeys: String, CodingKey {
         case articleID = "id"
         case articleTitle = "title"
+        case imageArticle = "image_url"
         case newsSite = "news_site"
         case publishDate = "published_at"
         case launches
@@ -24,6 +25,7 @@ struct Article: Decodable {
     let articleID: Int
     let articleTitle: String
     let newsSite: String
+    let imageArticle: String
     let publishDate: String
     let launches: [Launch]
 }
