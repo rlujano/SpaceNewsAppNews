@@ -37,7 +37,7 @@ TODO: Add long description of the pod here.
   end
   
   s.test_spec 'UnitTests' do |test_spec|
-    test_spec.source_files = ['News/Tests/UnitTests/**/*', 'News/Tests/Mocks/**/*']
+    test_spec.source_files = ['News/Tests/UnitTests/**/*', 'News/Tests/Mocks/**/*', 'News/Tests/Spies/**/*']
   end
   
   s.dependency 'CoreEntities'
