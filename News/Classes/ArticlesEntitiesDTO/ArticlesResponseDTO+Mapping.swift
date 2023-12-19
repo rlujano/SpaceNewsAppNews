@@ -1,3 +1,4 @@
+import CoreEntities
 
 struct ArticlesResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
@@ -37,4 +38,35 @@ struct Launch: Decodable {
     }
     let launchID: String
     let provider: String
+}
+
+
+extension Article {
+    func toDomainArticle() -> ItemArticle {
+        
+        var domainLaunches: [ItemLaunch] = []
+        
+        for launch in launches {
+            let domainLaunch = launch.toDomainLaunch()
+            domainLaunches.append(domainLaunch)
+        }
+        
+        return .init(
+            idArticle: articleID,
+            titleArticle: articleTitle,
+            newsSite: newsSite,
+            articleImage: imageArticle,
+            publishDate: publishDate,
+            launches: domainLaunches
+        )
+    }
+}
+
+extension Launch {
+    func toDomainLaunch() -> CoreEntities.ItemLaunch {
+        return .init(
+            launchID: launchID,
+            provider: provider
+        )
+    }
 }
