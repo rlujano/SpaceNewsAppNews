@@ -1,4 +1,5 @@
+import CoreEntities
 
 protocol ArticlesRepositoryProtocol {
-    func performListRequest(completion: @escaping (Result<[Article], Error>) -> Void ) -> Void
+    func performListRequest(completion: @escaping (Result<[ItemArticle], Error>) -> Void ) -> Void
 }

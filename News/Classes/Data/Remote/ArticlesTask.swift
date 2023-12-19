@@ -20,7 +20,7 @@ class ArticlesTask {
             DispatchQueue.main.async {
                 do {
                     let responseDTO = try JSONDecoder().decode(ArticlesResponseDTO.self, from: data)
-                    print(responseDTO)
+                    //print(responseDTO)
                     completion(.success(responseDTO))
                 } catch {
                     completion(.failure(error))
