@@ -36,6 +36,10 @@ TODO: Add long description of the pod here.
     test_spec.source_files = 'News/Tests/IntegratedTests/**/*'
   end
   
+  s.test_spec 'UnitTests' do |test_spec|
+    test_spec.source_files = ['News/Tests/UnitTests/**/*', 'News/Tests/Mocks/**/*']
+  end
+  
   s.dependency 'CoreEntities'
   
   # s.resource_bundles = {
