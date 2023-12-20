@@ -32,8 +32,21 @@ extension NewsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let articleCell = self.newsTableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as UITableViewCell
-        articleCell.textLabel?.text = articlesViewModel?.articles?[indexPath.row].titleArticle
+        let articleCell = self.newsTableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as! ArticleCell
+        
+        articleCell.lblTitle.text = articlesViewModel?.articles?[indexPath.row].titleArticle
+        
+        articleCell.lblNewSite.text = articlesViewModel?.articles?[indexPath.row].newsSite
+        
+        let dateArticle = articlesViewModel?.articles?[indexPath.row].publishDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, y 'at' h:mm a, zzzz"
+
+        let formattedDate = dateFormatter.string(from: Date())
+
+        print("Formatted date: \(formattedDate)")
+        articleCell.lblPublishedDate.text = formattedDate
+        
         return articleCell
     }
     
