@@ -15,6 +15,7 @@ public class NewsViewController: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
     
+    @IBOutlet weak var actIndFetchData: UIActivityIndicatorView!
     public override func viewDidLoad() {
         let dataSource = ArticlesRemoteDataSource()
         let repository = RemoteArticleRepository(dataSource: dataSource)
@@ -57,11 +58,13 @@ extension NewsViewController: ArticlesViewModelDelegateProtocol {
     func articlesEvent(state: ViewControllerState) {
         switch state {
             case .success:
+            actIndFetchData.stopAnimating()
                 newsTableView.reloadData()
             case .loading:
-                print("todo Loading")
+                actIndFetchData.startAnimating()
             case .error:
-                print("Todo error")
+                actIndFetchData.stopAnimating()
+                
         }
     }
 }
