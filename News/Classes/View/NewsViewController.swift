@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreApp
 
 public class NewsViewController: UIViewController {
     
@@ -40,12 +41,14 @@ extension NewsViewController: UITableViewDataSource {
 
 extension NewsViewController: ArticlesViewModelDelegateProtocol {
     // Todo magic numbers
-    func articlesEvent(state: Int) {
+    func articlesEvent(state: ViewControllerState) {
         switch state {
-            case 1:
+            case .success:
                 newsTableView.reloadData()
-            default:
-                print("No action")
+            case .loading:
+                print("todo Loading")
+            case .error:
+                print("Todo error")
         }
     }
 }

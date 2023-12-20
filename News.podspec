@@ -41,6 +41,7 @@ TODO: Add long description of the pod here.
   end
   
   s.dependency 'CoreEntities'
+  s.dependency 'CoreApp'
   
   # s.resource_bundles = {
   #   'News' => ['News/Assets/*.png']
