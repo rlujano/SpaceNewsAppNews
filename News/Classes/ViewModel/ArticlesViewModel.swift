@@ -1,9 +1,10 @@
 
 import CoreEntities
+import CoreApp
 
 protocol ArticlesViewModelDelegateProtocol: class {
-    // Replace int by ViewControllerState implements on "Core"
-    func articlesEvent(state: Int)
+    
+    func articlesEvent(state: ViewControllerState)
 }
 
 protocol ArticlesViewModelProtocol {
@@ -22,16 +23,16 @@ final class ArticlesViewModel: ArticlesViewModelProtocol {
     }
     
     func requestList() {
-        // Replace magic number
-        delegate?.articlesEvent(state: 0) // .loading
+        
+        delegate?.articlesEvent(state: .loading)
         useCase.execute(completion: { [weak self] result in
                             switch result {
                                 case .success(let response):
                                     self?.articles = response
-                                    self?.delegate?.articlesEvent(state: 1) // .success
+                                self?.delegate?.articlesEvent(state: .success)
                                 case .failure(let error):
                                     print(error.localizedDescription)
-                                    self?.delegate?.articlesEvent(state: 2) // .error
+                                self?.delegate?.articlesEvent(state: .error)
                             }
                         })
     }
