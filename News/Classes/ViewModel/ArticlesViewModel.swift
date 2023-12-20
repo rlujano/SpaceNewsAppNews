@@ -7,6 +7,7 @@ protocol ArticlesViewModelDelegateProtocol: class {
 }
 
 protocol ArticlesViewModelProtocol {
+    var delegate: ArticlesViewModelDelegateProtocol? { get set }
     var articles: [ItemArticle]? {get set}
     func requestList()
 }
