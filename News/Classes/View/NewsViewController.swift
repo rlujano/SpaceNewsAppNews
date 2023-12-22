@@ -35,18 +35,32 @@ extension NewsViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let articleCell = self.newsTableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as! ArticleCell
         
+        articleCell.imgArticle.layer.cornerRadius = 10
+        
+        let artIMG = articlesViewModel?.articles?[indexPath.row].articleImage
+        let loadTask = ImageLoadTask()
+        loadTask.getArtImage(from: artIMG!) { image in
+            DispatchQueue.main.async {
+                articleCell.imgArticle.image = image
+            }
+        }
+        
         articleCell.lblTitle.text = articlesViewModel?.articles?[indexPath.row].titleArticle
         
         articleCell.lblNewSite.text = articlesViewModel?.articles?[indexPath.row].newsSite
-        
-        let dateArticle = articlesViewModel?.articles?[indexPath.row].publishDate
+        let date = articlesViewModel?.articles?[indexPath.row].publishDate
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d, y 'at' h:mm a, zzzz"
-
-        let formattedDate = dateFormatter.string(from: Date())
-
-        print("Formatted date: \(formattedDate)")
-        articleCell.lblPublishedDate.text = formattedDate
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let convertedDate = dateFormatter.date(from: date ?? "")!
+        
+        dateFormatter.dateFormat = "MMMM d, yyyy 'at' HH:mm"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT-5") as TimeZone?
+        dateFormatter.locale = Locale(identifier: "en_PE")
+        let newDate = dateFormatter.string(from: convertedDate)
+        articleCell.lblPublishedDate.text = newDate
+        
         
         return articleCell
     }
