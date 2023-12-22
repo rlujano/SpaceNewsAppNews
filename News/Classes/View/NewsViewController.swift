@@ -45,6 +45,9 @@ extension NewsViewController: UITableViewDataSource {
             }
         }
         
+        articleCell.layer.cornerRadius = 15
+        articleCell.layer.shadowColor = UIColor.black.cgColor
+        
         articleCell.lblTitle.text = articlesViewModel?.articles?[indexPath.row].titleArticle
         
         articleCell.lblNewSite.text = articlesViewModel?.articles?[indexPath.row].newsSite
